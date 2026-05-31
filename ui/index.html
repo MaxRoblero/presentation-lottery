@@ -1,25 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Presentation Lottery</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Lottery</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <!-- ============================ -->
+  <!--        Encabezado            -->
+  <!-- ============================ -->
+  <header>
+    <h1>🎓 Presentation Lottery</h1>
+    <p>Generador de orden de exposiciones</p>
+  </header>
 
-    <h1>Presentation Lottery</h1>
+  <!-- ============================ -->
+  <!--        Contenido principal   -->
+  <!-- ============================ -->
+  <main>
+    <!-- Slot Machine -->
+    <section class="slot-machine">
+      <!-- Controles -->
+      <div class="controls">
+        <label for="teamCount">Número de equipos</label>
+        <input type="number" id="teamCount" min="2" placeholder="Número de equipos">
+        <button id="generateBtn">🎰 Spin</button>
+      </div>
 
-    <input type="number" id="team-count" placeholder="Número de equipos">
+      <!-- Indicador -->
+      <div id="currentReveal" class="reveal-indicator">
+        Listo para iniciar...
+      </div>
 
-    <button id="generate-button">Generar</button>
+      <!-- Ventana del slot -->
+      <div class="slot-window">
+        <div class="slot-reel" id="slotReel"></div>
+      </div>
+    </section>
 
+    <!-- Leaderboard -->
+    <aside class="leaderboard">
+      <h2>Orden de Exposición</h2>
+      <ul id="leaderboardList">
+        <li data-pos="1">🥇 <span>?</span></li>
+        <li data-pos="2">🥈 <span>?</span></li>
+        <li data-pos="3">🥉 <span>?</span></li>
+        <li data-pos="4">4️⃣ <span>?</span></li>
+        <li data-pos="5">5️⃣ <span>?</span></li>
+      </ul>
+    </aside>
+
+    <!-- Toggle de tema -->
+    <div class="theme-toggle">
+      <button id="themeBtn"><span id="themeIcon">🌙</span></button>
+    </div>
+
+    <!-- Créditos -->
+    <div class="credits">
+      <button id="creditsBtn">By MaxRoblero</button>
+    </div>
+
+    <!-- Modal de créditos -->
+    <div id="creditsModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal">&times;</span>
+        <h2>🎓 Presentation Lottery</h2>
+        <p>Aplicación creada por <strong>MaxRoblero</strong></p>
+        <p><a href="https://github.com/MaxRoblero" target="_blank">Visita mi GitHub</a></p>
+        <p>Versión 1.0 — 2026</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Confeti -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Script principal -->
+  <script src="app.js"></script>
+
+  <!-- ============================ -->
+  <!--      Code by MaxRoblero      -->
+  <!-- ============================ -->
 </body>
-
-<script src="app.js"></script>
-
 </html>
-
-<!-- ============================ -->
-<!--      Code by MaxRoblero      -->
-<!-- ============================ -->

@@ -1,0 +1,334 @@
+/* ===================================================== */
+/*                 🎓 PRESENTATION LOTTERY               */
+/*                    Code by MaxRoblero                */
+/* ===================================================== */
+/*
+    Stylesheet Version: Enhanced Edition
+    Theme: Modern Casino + Academic Presentation
+    Features:
+    ✔ Responsive Layout
+    ✔ Dark Mode
+    ✔ Animated Slot Machine
+    ✔ Dynamic Leaderboard
+    ✔ Confetti Celebration
+    ✔ Credits Modal
+*/
+/* ===================================================== */
+
+
+/* Color system */
+:root {
+  --primary: #2563eb;
+  --secondary: #3b82f6;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --success: #10b981;
+  --gold: #f59e0b;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+}
+
+header h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+header p {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;  
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+}
+
+.controls {
+  margin-bottom: 1rem;
+}
+
+.controls input, .controls button {
+  padding: 0.5rem;
+  font-size: 16px;
+  margin-right: 0.5rem;
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px; /* redondo estilo casino */
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.3s;
+  padding: 0.7rem 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px var(--secondary);
+}
+
+button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--secondary);
+}
+
+button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Slot Machine Glow Up */
+.slot-machine {
+  background: linear-gradient(145deg, #ffffff, #e0e7ff);
+  border: 6px solid var(--primary);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+}
+
+.slot-window {
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  border: 4px solid var(--secondary);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.slot-item {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.reveal-indicator {
+  font-size: 20px;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--secondary);
+}
+
+/* Leaderboard */
+.leaderboard {
+  margin-top: auto;
+  width: 100%;
+  max-width: 500px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(37,99,235,0.3);
+  padding: 1rem;
+  text-align: center;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.leaderboard h2 {
+  font-size: 20px;
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.leaderboard li {
+  font-size: 18px;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--muted);
+  transition: all 0.4s ease;
+  text-align: center;
+}
+
+.leaderboard li.revealed {
+  color: var(--success);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.leaderboard li[data-pos="1"] span {
+  color: var(--gold); /* oro */
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--gold);
+}
+
+.leaderboard li[data-pos="2"] span {
+  color: #c0c0c0; /* plata */
+  font-weight: bold;
+  text-shadow: 0 0 8px #c0c0c0;
+}
+
+.leaderboard li[data-pos="3"] span {
+  color: #cd7f32; /* bronce */
+  font-weight: bold;
+  text-shadow: 0 0 8px #cd7f32;
+}
+
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Botón de toggle fijo en esquina inferior derecha */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.theme-toggle button {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centra el icono */
+  transition: background 0.3s, transform 0.2s;
+}
+
+.theme-toggle button:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Modo oscuro */
+body.dark {
+  --background: #0f172a;
+  --surface: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --primary: #3b82f6;
+  --secondary: #60a5fa;
+  --success: #22c55e;
+  --gold: #facc15;
+}
+
+/* Caja del sorteador en oscuro */
+body.dark .slot-machine {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-color: var(--secondary);
+}
+
+/* Inputs en modo claro*/
+.controls input {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  color: var(--text);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+/* Inputs en modo oscuro */
+body.dark .controls input {
+  background: var(--surface);
+  border: 2px solid var(--secondary);
+  color: var(--text);
+}
+
+body.dark .controls input::placeholder {
+  color: var(--muted); /* gris claro */
+}
+
+.credits {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+.credits button {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 0.4rem 0.8rem;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.credits button:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: var(--surface);
+  color: var(--text);
+  margin: 10% auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+#closeModal {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
