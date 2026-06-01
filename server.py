@@ -1,7 +1,7 @@
 # =================
 #      Imports
 # =================
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import lottery
 
@@ -10,6 +10,14 @@ import lottery
 # ================
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/")
+def home():
+    return send_from_directory("ui", "index.html")
+
+@app.route("/<path:path>")
+def static_files(path):
+    return send_from_directory("ui", path)
 
 @app.route("/generate", methods=["POST"])
 def generate():

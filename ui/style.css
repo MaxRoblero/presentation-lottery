@@ -265,7 +265,7 @@ body.dark .controls input {
 }
 
 body.dark .controls input::placeholder {
-  color: var(--muted); /* gris claro */
+  color: var(--muted);
 }
 
 .credits {
@@ -281,13 +281,20 @@ body.dark .controls input::placeholder {
   padding: 0.4rem 0.8rem;
   font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s, transform 0.2s, color 0.3s;
+  color: var(--text);
 }
 
 .credits button:hover {
   background: var(--primary);
   color: white;
   transform: scale(1.05);
+}
+
+body.dark .credits button {
+  background: var(--surface);
+  border-color: var(--secondary);
+  color: var(--text);
 }
 
 /* Modal */

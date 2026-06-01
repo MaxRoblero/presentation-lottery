@@ -1,27 +1,30 @@
 # 🎓 Presentation Lottery
 
-A web application that generates a random presentation order for school teams using a Python Flask backend and an interactive frontend experience.
+A desktop and web-based application that generates a random order for classroom presentations using a Python backend and a modern animated interface.
 
-Instead of displaying the results instantly, the application reveals positions one by one through an animated slot-machine style system, building suspense until first place is revealed.
+## 📸 Overview
+
+Presentation Lottery allows teachers and students to generate a fair and random presentation order through an engaging slot-machine style animation.
+
+The project started as a console application and evolved into a complete desktop application powered by Flask, PyWebView, HTML, CSS, and JavaScript.
 
 ---
 
 ## ✨ Features
 
-* Random team order generation
-* Flask REST API
-* Interactive web interface
-* Animated slot-machine reveal system
-* Dynamic leaderboard
-* Reveal positions from last place to first place
-* Dark mode support
-* Confetti celebration for first place
-* Local JSON result storage
-* Responsive design
+* 🎲 Random team order generation
+* 🎰 Slot machine reveal animation
+* 🏆 Dynamic leaderboard
+* 🌙 Dark mode support
+* 🎉 Final celebration effects
+* 📡 REST API with Flask
+* 💾 JSON result storage
+* 🖥️ Desktop application using PyWebView
+* 📱 Responsive user interface
 
 ---
 
-## 🛠️ Tech Stack
+## 🧠 Tech Stack
 
 ### Backend
 
@@ -33,51 +36,17 @@ Instead of displaying the results instantly, the application reveals positions o
 
 * HTML5
 * CSS3
-* Vanilla JavaScript
+* JavaScript (Vanilla JS)
 
-### Data Storage
+### Desktop
 
-* JSON
+* PyWebView
 
----
+### Tools
 
-## 🎰 How It Works
-
-1. Enter the number of teams.
-2. Click **Spin**.
-3. The frontend sends a request to the Flask API.
-4. The backend generates a random presentation order.
-5. Results are returned as JSON.
-6. The slot machine animation begins.
-7. Positions are revealed from last place to first place.
-8. The leaderboard fills progressively.
-9. First place is revealed at the end.
-
----
-
-## 📡 API Endpoint
-
-### POST `/generate`
-
-Request:
-
-```json
-{
-    "count": 5
-}
-```
-
-Response example:
-
-```json
-{
-    "Equipo 3": 1,
-    "Equipo 4": 2,
-    "Equipo 1": 3,
-    "Equipo 5": 4,
-    "Equipo 2": 5
-}
-```
+* Git
+* GitHub
+* PyInstaller
 
 ---
 
@@ -86,17 +55,17 @@ Response example:
 ```text
 presentation-lottery/
 │
-├── lottery.py
-├── server.py
-│
 ├── ui/
-|   └── app.js
-|   └── index.html
-|   └── style.css
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
 │
 ├── data/
 │   └── results.json
 │
+├── lottery.py
+├── server.py
+├── main.py
 ├── requirements.txt
 ├── README.md
 └── LICENSE
@@ -106,53 +75,115 @@ presentation-lottery/
 
 ## 🚀 Running the Project
 
-Install dependencies:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/USERNAME/presentation-lottery.git
+cd presentation-lottery
+```
+
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Start the backend:
+### 3. Run the application
 
 ```bash
-python server.py
+python main.py
 ```
 
-Open:
+---
+
+## 📡 API Endpoint
+
+### POST /generate
+
+#### Request
+
+```json
+{
+    "count": 5
+}
+```
+
+#### Response
+
+```json
+{
+    "Equipo 1": 3,
+    "Equipo 2": 1,
+    "Equipo 3": 5,
+    "Equipo 4": 2,
+    "Equipo 5": 4
+}
+```
+
+---
+
+## 📦 Building the Executable
+
+Using PyInstaller:
+
+```bash
+pyinstaller --onefile --windowed main.py
+```
+
+The executable will be generated inside:
 
 ```text
-index.html
+dist/
 ```
 
-in your browser.
+---
+
+## 🗂️ Version History
+
+### v1.0.0-alpha
+
+* Initial console version
+* Random team assignment system
+* JSON result storage
+
+### v1.0.0
+
+* Flask API implementation
+* Frontend and backend communication
+
+### v1.1.0
+
+* Web interface
+* Slot machine animation
+* Leaderboard system
+* Dark mode
+* Celebration effects
+
+### v1.2.0
+
+* Desktop application using PyWebView
+* Flask serves frontend files directly
+* Simplified application startup through `main.py`
+* Improved deployment workflow
 
 ---
 
-## 📚 Learning Goals
-
-This project was created as a learning experience focused on:
-
-* Python programming
-* Flask APIs
-* JSON data handling
-* HTTP requests
-* Frontend and backend integration
-* JavaScript asynchronous programming
-* DOM manipulation
-* Web application architecture
-
----
-
-## 🤝 Acknowledgements
+## 🤖 AI Usage Disclosure
 
 This project was developed by MaxRoblero.
 
-AI tools such as GitHub Copilot and ChatGPT were used as learning and development assistants, particularly for frontend implementation, debugging assistance, and web development guidance.
-
-Project architecture, integration, customization, testing, and final decisions were carried out by the author.
+AI tools were used as learning assistants and to help with parts of the HTML, CSS, and JavaScript implementation. The Python backend logic, project structure decisions, debugging process, and integration work were completed as part of the learning experience.
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**MaxRoblero**
+
+GitHub: https://github.com/MaxRoblero
